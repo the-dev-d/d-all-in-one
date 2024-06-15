@@ -1,0 +1,41 @@
+<section class="w-full h-full grid-cols-2 grid p-10 gap-10">
+    <form [formGroup]="form">
+        <h3 class="text-xl mb-2">
+            <block-text [text]="['~~', ' '].concat('ENCODED'.split(''))"/>
+        </h3>
+        <textarea formControlName="token" [class.bg-red-300]="form.invalid" [class.focus:border-red-300]="form.invalid" class="bg-emerald-200 h-40 resize-none focus:outline-none focus:border-emerald-500 border-transparent border p-3 rounded-md bg-opacity-30 w-full" name="encoded" id=""></textarea>
+        
+    </form>
+    <div>
+        <h3 class="text-xl text-transparent font-jetbrains mb-2"> 
+            <block-text [text]="'DECODED'.split('').concat([' ','->'])"/>
+        </h3>
+        <div class="grid grid-rows-3 gap-6">
+            <div class="bg-emerald-200 bg-opacity-30 border border-gray-400">
+                <div class="p-1 px-2 border-b border-gray-400 uppercase">
+                    Header <span class="text-xs">: Algorithm & type</span>
+                </div>
+                <textarea name="header" (ngModelChange)="handleChange()"  [ngModel]="header().replace('{', '{\n\t').replace('}', '\n}').replaceAll(',',',\n\t')" class="bg-transparent h-40 resize-none focus:outline-none border-transparent border p-3 bg-opacity-30 w-full"></textarea>
+            </div>
+
+            <div class="bg-emerald-200 bg-opacity-30 border border-gray-400">
+                <div class="p-1 px-2 border-b border-gray-400 uppercase">
+                    Payload
+                </div>
+                <textarea name="header" (ngModelChange)="handleChange()" [ngModel]="payload().replace('{', '{\n\t').replace('}', '\n}').replaceAll(',',',\n\t')" class="bg-transparent h-40 resize-none focus:outline-none border-transparent border p-3 bg-opacity-30 w-full"></textarea>
+            </div>
+
+            <form [formGroup]="form" class="bg-emerald-200 bg-opacity-30 border border-gray-400">
+                <div class="p-1 px-2 border-b border-gray-400 uppercase">
+                    Signature
+                </div>
+                <div class="grid gap-3 p-6">
+                    <mat-form-field class="w-full m-0">
+                        <mat-label>Your secret key</mat-label>
+                        <input #input formControlName="secret"  matInput>
+                    </mat-form-field>                   
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

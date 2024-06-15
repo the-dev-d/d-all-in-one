@@ -1,0 +1,16 @@
+<div class="flex p-2">
+    @for (word of text(); track $index) {
+        <div  class="relative py-2 px-2 text-white grid min-w-[1rem] font-jetbrains tracking-normal uppercase font-medium border-emerald-700 h-fit leading-none">
+            <span>
+                {{word === ' ' ? '&nbsp;': word}}
+            </span>
+            <div [style.grid-template-columns]="'repeat('+word.split('').length+', 1fr)'" class="absolute grid top-0 left-0 w-full h-full">
+                @for (letter of word.split('') ; track $index) {
+                    <span [class.border]="letter != ' '" [class.px-[7%]]="$count>1" [class.px-2]="$count==1" class="h-full border-white/40 flex w-full">
+                        &nbsp;
+                    </span>
+                }
+            </div>
+        </div>
+    }
+</div>

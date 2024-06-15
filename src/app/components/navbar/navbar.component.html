@@ -1,0 +1,14 @@
+<nav class="grid w-fit h-full gap-4" >
+    <div class="grid content-between h-fit gap-6">
+        <ng-content select="[logo]"></ng-content>
+        @for (item of items(); track $index) {
+            <div routerLink={{item.url}} class="grid place-items-center p-2 gap-2 text-gray-300 hover:text-white">
+                <span class="material-symbols-outlined">
+                    {{item.icon}}
+                </span>
+                <span class="text-xs">{{item.name}}</span>
+            </div>
+        }
+    </div>
+    <ng-content select="[symbol]"></ng-content>
+</nav>  

@@ -1,0 +1,9 @@
+.triangle-inner {
+    clip-path: polygon(50% 5%, 0% 95%, 100% 95%);
+
+}
+
+.triangle-outer {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 95%);
+
+}
